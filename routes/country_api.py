@@ -221,12 +221,14 @@ async def get_aggregated_request(query: str):
     Récupère les informations de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
-    - query (str): La requête personnalisée à effectuer sur la collection MongoDB.
+    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous forme de liste entre [contenu de la requête].
+    exemple : [{"$project": {"country": "$country", "pop1980": "$pop1980","pop2000": "$pop2000", "pop2010": "$pop2010", "pop2023": "$pop2023", "pop2030": "$pop2030", "pop2050": "$pop2050" }}]
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données des pays au format JSON.
     """
     query = json.loads(query)
+
     df = getAggregationRequest(query, mycollection)
     return JSONResponse(content=df.to_dict(orient="records"))
 
@@ -238,7 +240,8 @@ async def get_find_request(query: str):
     Récupère les informations de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
-    - query (str): La requête personnalisée à effectuer sur la collection MongoDB.
+    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous forme de liste entre [contenu de la requête].
+    exemple : [{"area": {"$gte": 220000, "$lte": 280000}}, {"_id":0}]
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données des pays au format JSON.
