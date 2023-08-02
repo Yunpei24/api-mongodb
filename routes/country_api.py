@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 import json
 from fastapi.responses import JSONResponse
 from models.country import Country
-from config.db import mycollection, client
+from config.db import mycollection
 from bson.objectid import ObjectId
 from starlette import responses as _responses
 from schemas.country_schemas import *
@@ -16,8 +16,6 @@ country_api = APIRouter()
 @country_api.get("/", tags=["Countries"])
 async def home():
     """
-    Renvoie un message de bienvenue.
-
     Returns:
     On redirige vers /redoc pour voir la documentation de l'API.
     redirect: Une redirection vers /redoc.
