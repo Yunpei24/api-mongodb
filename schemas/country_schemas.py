@@ -214,9 +214,11 @@ def getAggregationRequest(aggregation, mycollection):
 
 # Fonction pour recevoir n'importe quelle requête "find" et retourner le résultat dans un dataframe
 def getFindRequest(query, mycollection):
-
-    # On récupère les données de population
-    countries = mycollection.find(query)
+    if len(query) == 1:
+        # On récupère les données de population
+        countries = mycollection.find(query[0])
+    elif len(query) == 2:
+        countries = mycollection.find(query[0], query[1])   
     # On met les données dans un dataframe
     df = pd.DataFrame(serializeList(countries))
     return df
