@@ -30,12 +30,10 @@ def countriesEntity(entity) -> list:
     return [countryEntity(item) for item in entity]
 
 def serializeDict(x) -> dict:
-    return {**{i:str(x[i]) for i in x if i=='_id'}, **{i:x[i] for i in x if i!='_id'}} # **{i:x[i] for i in x if i!='_id'} pour enlever le _id
+    return {**{i:str(x[i]) for i in x if i=='_id'}, **{i:x[i] for i in x if i!='_id'}}
 
 def serializeList(entity) -> list:
     return [serializeDict(x) for x in entity]
-
-
 
 # Fonction de requêtes pour extraire un pays et la population de 1980, 2010, 2023 et 2050 et les mettre dans un dataframe
 def getCountryPop(countryName, mycollection):
@@ -60,9 +58,7 @@ def getCountryPop(countryName, mycollection):
         # Le pays n'a pas été trouvé dans la collection
         print("Country not found in the database.")
         return None
-# Fonction de requêtes pour extraire un pays et toutes ses informations et les mettre dans un dataframe
     
-
 # Fonction pour recupérer les pays dont la densité est compris entre d1 et d2 et les mettre dans un dataframe
 def getCountriesDensityD1D2(d1, d2, mycollection):
     d1 = float(d1)
@@ -80,8 +76,6 @@ def getCountriesDensityD1D2(d1, d2, mycollection):
     # On met les données dans un dataframe
     df = pd.DataFrame(data)
     return df
-
-
 
 # Obtenir la population moyenne  du monde en 1980, 2000, 2010, 2022, 2023, 2030 et 2050 en utilisant une requête d'agrégation
 def getWorldAveragePop(mycollection):
