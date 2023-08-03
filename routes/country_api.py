@@ -125,7 +125,8 @@ async def get_country(name: str):
 @country_api.get("/countries_density/{D1}/{D2}", response_model=dict, tags=["Countries"])
 async def get_countries_densityD1D2(D1: float, D2: float):
     """
-    Récupère les informations de densité (density) de tous les pays dont la densité est comprise entre D1 et D2 depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère les informations de densité (density) de tous les pays dont la densité est comprise 
+    entre D1 et D2 depuis la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
     - D1 (float): La valeur minimale de densité.
