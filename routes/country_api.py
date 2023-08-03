@@ -274,7 +274,8 @@ async def get_nb_countries_supavg(year: int):
 
     Returns:
     Un  dict contenant le nombre de pays dont la population en une année est supérieure à la moyenne mondiale.
-    Sous la forme {"nb_countries_supavg": nb_countries_supavg}
+    Sous la forme {"Mondiale average population in " + str(year) : moy,
+        "nb_countries_supavg": nb_countries_supavg}
     """
     nb_countries_supavg, moy = getNbCountriesPopSupAvg(year, mycollection)
     
@@ -289,7 +290,8 @@ async def get_nb_countries_infavg(year: int):
 
     Returns:
     Un  dict contenant le nombre de pays dont la population en une année est inférieure à la moyenne mondiale.
-    Sous la forme {"nb_countries_infavg": nb_countries_infavg}
+    Sous la forme {"Mondiale average population in " + str(year) : moy,
+        "nb_countries_infavg": nb_countries_infavg}
     """
     nb_countries_infavg, moy = getNbCountriesPopInfAvg(year, mycollection)
     
