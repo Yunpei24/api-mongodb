@@ -265,3 +265,33 @@ async def get_distinct_request(query: str):
     #query = json.loads(query)
     df = getDistinctRequest(query, mycollection)
     return JSONResponse(content=df.to_dict(orient="records"))
+
+# Documentation de l'endpoint get_nb_countries_supavg
+@country_api.get("/nb_countries_supavg/{year}", response_model=dict, tags=["Countries"])
+async def get_nb_countries_supavg(year: int):
+    """
+    Récupère le nombre de pays dont la population en une année est supérieure à la moyenne mondiale depuis la collection MongoDB et les renvoie au format JSON.
+
+    Returns:
+    Un  dict contenant le nombre de pays dont la population en une année est supérieure à la moyenne mondiale.
+    Sous la forme {"nb_countries_supavg": nb_countries_supavg}
+    """
+    nb_countries_supavg, moy = getNbCountriesPopSupAvg(year, mycollection)
+    
+    return {"Mondiale average population in " + str(year) : moy,
+        "number_countries_sup_avg in : " + str(year) : nb_countries_supavg}
+
+# Documentation de l'endpoint get_nb_countries_infavg
+@country_api.get("/nb_countries_infavg/{year}", response_model=dict, tags=["Countries"])
+async def get_nb_countries_infavg(year: int):
+    """
+    Récupère le nombre de pays dont la population en une année est inférieure à la moyenne mondiale depuis la collection MongoDB et les renvoie au format JSON.
+
+    Returns:
+    Un  dict contenant le nombre de pays dont la population en une année est inférieure à la moyenne mondiale.
+    Sous la forme {"nb_countries_infavg": nb_countries_infavg}
+    """
+    nb_countries_infavg, moy = getNbCountriesPopInfAvg(year, mycollection)
+    
+    return {"Mondiale average population in " + str(year) : moy,
+        "number_countries_inf_avg in : " + str(year) : nb_countries_infavg}
