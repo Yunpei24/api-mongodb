@@ -1,5 +1,6 @@
 # Autor: Joshua Juste NIKIEMA
 import pandas as pd
+import json
 
 
 def countryEntity(item) -> dict:
@@ -224,3 +225,43 @@ def getDistinctRequest(distinct, mycollection):
     # On met les données dans un dataframe
     df = pd.DataFrame(countries)
     return df
+
+# Fonction pour trouver le nombre de pays dont la population en une année donnée est supérieure à la population moyenne
+def getNbCountriesPopSupAvg(year, mycollection):
+    year = str(year)
+
+    # On récupère la population moyenne
+    avg = mycollection.aggregate([
+        {"$group": {
+            "_id": "World Average Population",
+            "avg": {"$avg": "$pop"+year}
+        }}
+    ])
+
+    # Ou convertir le curseur en une liste de documents Python
+    avg = list(avg)
+    avg = avg[0]["avg"]
+    
+    # On récupère le nombre de pays dont la population est supérieure à la population moyenne
+    nbCountries = mycollection.count_documents({"pop"+year: {"$gte": avg}})
+    return nbCountries, avg
+
+# Fonction pour trouver le nombre de pays dont la population en une année donnée est inférieure à la population moyenne
+def getNbCountriesPopInfAvg(year, mycollection):
+    year = str(year)
+
+    # On récupère la population moyenne
+    avg = mycollection.aggregate([
+        {"$group": {
+            "_id": "World Average Population",
+            "avg": {"$avg": "$pop"+year}
+        }}
+    ])
+
+    # Ou convertir le curseur en une liste de documents Python
+    avg = list(avg)
+    avg = avg[0]["avg"]
+    
+    # On récupère le nombre de pays dont la population est inférieure à la population moyenne
+    nbCountries = mycollection.count_documents({"pop"+year: {"$lte": avg}})
+    return nbCountries, avg
