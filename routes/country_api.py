@@ -280,7 +280,7 @@ async def get_nb_countries_supavg(year: int):
     nb_countries_supavg, moy = getNbCountriesPopSupAvg(year, mycollection)
     
     return {"Mondiale average population in " + str(year) : moy,
-        "Number of countries with population grather than average population in : " + str(year) : nb_countries_supavg}
+        "Number of countries with population grather than average population in " + str(year) : nb_countries_supavg}
 
 # Documentation de l'endpoint get_nb_countries_infavg
 @country_api.get("/nb_countries_infavg/{year}", response_model=dict, tags=["Countries"])
@@ -296,4 +296,4 @@ async def get_nb_countries_infavg(year: int):
     nb_countries_infavg, moy = getNbCountriesPopInfAvg(year, mycollection)
     
     return {"Mondiale average population in " + str(year) : moy,
-        "Number of countries with population lower than average population in : " + str(year) : nb_countries_infavg}
+        "Number of countries with population lower than average population in " + str(year) : nb_countries_infavg}
