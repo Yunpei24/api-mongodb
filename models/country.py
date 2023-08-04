@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Country(BaseModel):
+class Country(BaseModel): # definition de notre model de donnée
     country: str
     rank: int
     area: float
