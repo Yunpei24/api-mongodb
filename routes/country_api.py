@@ -202,7 +202,8 @@ async def get_countries_pops():
 @country_api.get("/countries_areas_sup1_sup2/{sup1}/{sup2}", response_model=dict, tags=["Countries"])
 async def get_countries_areas_sup1_sup2(sup1: float, sup2: float):
     """
-    Récupère les informations de surface (area) de tous les pays dont la surface est comprise entre sup1 et sup2 depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère les informations de surface (area) de tous les pays dont la surface est comprise entre sup1 et sup2 depuis
+    la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
     - sup1 (float): La valeur minimale de surface.
