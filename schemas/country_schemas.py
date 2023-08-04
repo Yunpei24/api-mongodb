@@ -36,29 +36,6 @@ def serializeDict(x) -> dict:
 def serializeList(entity) -> list:
     return [serializeDict(x) for x in entity]
 
-# Fonction de requêtes pour extraire un pays et la population de 1980, 2010, 2023 et 2050 et les mettre dans un dataframe
-def getCountryPop(countryName, mycollection):
-    # On récupère le pays
-    country = mycollection.find_one({"country": countryName})
-    
-    if country:
-        # Le pays a été trouvé dans la collection
-        # On récupère les données de population
-        pop1980 = country.get("pop1980")
-        pop2010 = country.get("pop2010")
-        pop2023 = country.get("pop2023")
-        pop2050 = country.get("pop2050")
-        
-        # On met les données dans un dataframe
-        df = pd.DataFrame({"Population in 1980": [pop1980],
-                           "Population in 2010": [pop2010],
-                           "Population in 2023": [pop2023],
-                           "Population in 2050": [pop2050]})
-        return df
-    else:
-        # Le pays n'a pas été trouvé dans la collection
-        print("Country not found in the database.")
-        return None
     
 # Fonction pour recupérer les pays dont la densité est compris entre d1 et d2 et les mettre dans un dataframe
 def getCountriesDensityD1D2(d1, d2, mycollection):
