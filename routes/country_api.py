@@ -174,7 +174,8 @@ async def get_least_populated_country(year: int):
 @country_api.get("/average_pop/", response_model=dict, tags=["Countries"])
 async def get_world_averagePop():
     """
-    Récupère la population moyenne mondiale en 1980, 2000, 2010, 2022, 2023, 2030 et 2050 depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère la population moyenne mondiale en 1980, 2000, 2010, 2022, 2023, 2030 et 2050 
+    depuis la collection MongoDB et les renvoie au format JSON.
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données de population moyenne au format JSON.
@@ -187,7 +188,8 @@ async def get_world_averagePop():
 @country_api.get("/countries_pop/", response_model=dict, tags=["Countries"])
 async def get_countries_pops():
     """
-    Récupère les informations de population (pop1980, pop2000, pop2010, pop2022, pop2023, pop2030, pop2050) de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère les informations de population (pop1980, pop2000, pop2010, pop2022, pop2023, pop2030, pop2050)
+      de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données des pays au format JSON.
