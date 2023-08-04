@@ -223,8 +223,10 @@ async def get_aggregated_request(query: str):
     Récupère les informations de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
-    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous forme de liste entre [contenu de la requête].
-    exemple : [{"$project": {"country": "$country", "pop1980": "$pop1980","pop2000": "$pop2000", "pop2010": "$pop2010", "pop2023": "$pop2023", "pop2030": "$pop2030", "pop2050": "$pop2050" }}]
+    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous
+      forme de liste entre [contenu de la requête].
+    exemple : [{"$project": {"country": "$country", "pop1980": "$pop1980","pop2000": "$pop2000",
+            "pop2010": "$pop2010", "pop2023": "$pop2023", "pop2030": "$pop2030", "pop2050": "$pop2050" }}]
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données des pays au format JSON.
@@ -242,7 +244,8 @@ async def get_find_request(query: str):
     Récupère les informations de tous les pays depuis la collection MongoDB et les renvoie au format JSON.
 
     Parameters:
-    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous forme de liste entre [contenu de la requête].
+    - query (str): La requête personnalisée à effectuer sur la collection MongoDB vous devez saisir sa sous
+    forme de liste entre [contenu de la requête].
     exemple : [{"area": {"$gte": 220000, "$lte": 280000}}, {"_id":0}]
 
     Returns:
@@ -274,7 +277,8 @@ async def get_distinct_request(query: str):
 @country_api.get("/nb_countries_supavg/{year}", response_model=dict, tags=["Countries"])
 async def get_nb_countries_supavg(year: int):
     """
-    Récupère le nombre de pays dont la population en une année est supérieure à la moyenne mondiale depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère le nombre de pays dont la population en une année est supérieure à la moyenne mondiale depuis
+    a collection MongoDB et les renvoie au format JSON.
 
     Returns:
     Un  dict contenant le nombre de pays dont la population en une année est supérieure à la moyenne mondiale.
@@ -290,7 +294,8 @@ async def get_nb_countries_supavg(year: int):
 @country_api.get("/nb_countries_infavg/{year}", response_model=dict, tags=["Countries"])
 async def get_nb_countries_infavg(year: int):
     """
-    Récupère le nombre de pays dont la population en une année est inférieure à la moyenne mondiale depuis la collection MongoDB et les renvoie au format JSON.
+    Récupère le nombre de pays dont la population en une année est inférieure à la moyenne mondiale depuis 
+    la collection MongoDB et les renvoie au format JSON.
 
     Returns:
     Un  dict contenant le nombre de pays dont la population en une année est inférieure à la moyenne mondiale.
