@@ -84,23 +84,26 @@ def getWorldAveragePop(mycollection):
     worldAverageDensity = mycollection.aggregate([
         {"$group": {
             "_id": "World Average Density",
-            "PopulationMoyEn2000": {"$avg": "$pop1980"},
+            "PopulationMoyEn1980": {"$avg": "$pop1980"},
             "PopulationMoyEn2000": {"$avg": "$pop2000"},
             "PopulationMoyEn2010": {"$avg": "$pop2010"},
             "PopulationMoyEn2022": {"$avg": "$pop2022"},
             "PopulationMoyEn2023": {"$avg": "$pop2023"},
             "PopulationMoyEn2000": {"$avg": "$pop2030"},
-            "PopulationMoyEn2000": {"$avg": "$pop2050"}
+            "PopulationMoyEn2050": {"$avg": "$pop2050"}
         }}
     ])
     # On récupère les données de population
     data = []
     for country in worldAverageDensity:
         country_data = {
+            "PopulationMoyEn1980": country.get("PopulationMoyEn1980"),
             "PopulationMoyEn2000": country.get("PopulationMoyEn2000"),
             "PopulationMoyEn2010": country.get("PopulationMoyEn2010"),
             "PopulationMoyEn2022": country.get("PopulationMoyEn2022"),
-            "PopulationMoyEn2023": country.get("PopulationMoyEn2023")
+            "PopulationMoyEn2023": country.get("PopulationMoyEn2023"),
+            "PopulationMoyEn2030": country.get("PopulationMoyEn2030"),
+            "PopulationMoyEn2050": country.get("PopulationMoyEn2050")
         }
         data.append(country_data)
     # On met les données dans un dataframe
