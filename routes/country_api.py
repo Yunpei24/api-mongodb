@@ -24,7 +24,7 @@ async def home():
 
 
 # Documentation de l'endpoint insert_country
-@country_api.post("/countries/", response_model=dict, tags=["Countries"])
+@country_api.post("/insert_country/", response_model=dict, tags=["Countries"])
 async def insert_country(country: Country):
     """
     Insère un nouveau document de pays dans la collection MongoDB.
@@ -45,7 +45,7 @@ async def insert_country(country: Country):
 ######################################## PUT ##########################################
 
 # Documentation de l'endpoint update_country
-@country_api.put("/countries/{id}", response_model=dict, tags=["Countries"])
+@country_api.put("/update_country/{id}", response_model=dict, tags=["Countries"])
 async def update_country(id: str, country: Country):
     """
     Met à jour les informations d'un pays dans la collection MongoDB.
@@ -68,7 +68,7 @@ async def update_country(id: str, country: Country):
 ######################################## DELETE ##########################################
 
 # Documentation de l'endpoint delete_country
-@country_api.delete("/countries/{id}", response_model=dict, tags=["Countries"])
+@country_api.delete("/delete_country/{id}", response_model=dict, tags=["Countries"])
 async def delete_country(id: str):
     """
     Supprime un document de pays de la collection MongoDB.
