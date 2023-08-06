@@ -33,12 +33,12 @@ async def insert_country(country: Country):
     - country (Country): Un objet Country contenant les informations du pays à insérer.
 
     Returns:
-    dict: Un dictionnaire contenant un message de confirmation et les données insérées.
+    dict: Un dictionnaire contenant un message de confirmation.
     """
     country_dict = dict(country)
     mycollection.insert_one(country_dict)
     
-    return {"message": "Country inserted successfully", "data": country_dict}
+    return {"message": "Country inserted successfully"}
 
 
 
