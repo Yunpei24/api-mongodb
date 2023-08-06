@@ -210,8 +210,12 @@ def getFindRequest(query, mycollection):
 
 # Fonction pour recevoir n'importe quelle requête 'distinct' et retourner le résultat dans un dataframe
 def getDistinctRequest(distinct, mycollection):
-    # On récupère les données de population
-    countries = mycollection.distinct(distinct)
+    if len(distinct) == 1:
+        # On récupère les données de population
+        countries = mycollection.distinct(distinct[0])
+    elif len(distinct) == 2:
+        countries = mycollection.distinct(distinct[0], distinct[1])
+
     # On met les données dans un dataframe
     df = pd.DataFrame(countries)
     return df
