@@ -265,11 +265,12 @@ async def get_distinct_request(query: str):
 
     Parameters:
     - query (str): La requête personnalisée à effectuer sur la collection MongoDB.
+    exemple : ["area", {"_id":0}]
 
     Returns:
     JSONResponse: Un objet JSONResponse contenant les données des pays au format JSON.
     """
-    #query = json.loads(query)
+    query = json.loads(query)
     df = getDistinctRequest(query, mycollection)
     return JSONResponse(content=df.to_dict(orient="records"))
 
