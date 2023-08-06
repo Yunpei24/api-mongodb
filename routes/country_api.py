@@ -55,12 +55,12 @@ async def update_country(id: str, country: Country):
     - country (Country): Un objet Country contenant les nouvelles informations du pays.
 
     Returns:
-    dict: Un dictionnaire contenant un message de confirmation et les données mises à jour.
+    dict: Un dictionnaire contenant un message de confirmation.
     """
     country_dict = dict(country)
     updated_country = updateCountry(id, country_dict, mycollection)
     if updated_country is not None:
-        return {"message": "Country updated successfully", "data": country_dict}
+        return {"message": "Country updated successfully"}
     else:
         raise HTTPException(status_code=404, detail="Country not found")
 
@@ -77,11 +77,11 @@ async def delete_country(id: str):
     - id (str): L'ID du document de pays à supprimer.
 
     Returns:
-    dict: Un dictionnaire contenant un message de confirmation et les données supprimées.
+    dict: Un dictionnaire contenant un message de confirmation.
     """
     deleted_country = mycollection.delete_one({"_id": ObjectId(id)})
     if deleted_country.deleted_count == 1:
-        return {"message": "Country deleted successfully", "data": serializeDict(deleted_country)}
+        return {"message": "Country deleted successfully"}
     else:
         raise HTTPException(status_code=404, detail="Country not found")
     
