@@ -58,7 +58,7 @@ async def update_country(id: str, country: Country):
     dict: Un dictionnaire contenant un message de confirmation et les données mises à jour.
     """
     country_dict = dict(country)
-    updated_country = mycollection.find_one_and_update({"_id": ObjectId(id)}, {"$set": country_dict})
+    updated_country = updateCountry(id, country_dict, mycollection)
     if updated_country is not None:
         return {"message": "Country updated successfully", "data": country_dict}
     else:
