@@ -41,7 +41,7 @@ def serializeList(entity) -> list:
 def updateCountry(id, newCountryData, mycollection):
     
     for key, value in newCountryData.items():
-        if value != None:
+        if value != None or value != "":
             upt_co = mycollection.find_one_and_update({"_id": ObjectId(id)}, {"$set": {key: value}})
             
     return upt_co
