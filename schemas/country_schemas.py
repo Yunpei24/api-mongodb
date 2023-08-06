@@ -1,6 +1,6 @@
 # Autor: Joshua Juste NIKIEMA
 import pandas as pd
-import json
+from bson.objectid import ObjectId
 
 
 def countryEntity(item) -> dict:
@@ -36,6 +36,16 @@ def serializeDict(x) -> dict:
 def serializeList(entity) -> list:
     return [serializeDict(x) for x in entity]
 
+
+# Modifier les données d'un pays
+def updateCountry(id, newCountryData, mycollection):
+    
+    for key, value in newCountryData.items():
+        if value != None:
+            upt_co = mycollection.find_one_and_update({"_id": ObjectId(id)}, {"$set": {key: value}})
+            
+    return upt_co
+    
     
 # Fonction pour recupérer les pays dont la densité est compris entre d1 et d2 et les mettre dans un dataframe
 def getCountriesDensityD1D2(d1, d2, mycollection):
