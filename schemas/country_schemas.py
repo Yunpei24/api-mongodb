@@ -70,7 +70,7 @@ def getWorldAveragePop(mycollection):
     # On récupère la densité de population moyenne du monde
     worldAverageDensity = mycollection.aggregate([
         {"$group": {
-            "_id": "World Average Density",
+            "_id": "World Average Population",
             "PopulationMoyEn1980": {"$avg": "$pop1980"},
             "PopulationMoyEn2000": {"$avg": "$pop2000"},
             "PopulationMoyEn2010": {"$avg": "$pop2010"},
