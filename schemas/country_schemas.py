@@ -41,7 +41,7 @@ def serializeList(entity) -> list:
 def updateCountry(id, newCountryData, mycollection):
     
     for key, value in newCountryData.items():
-        if value != None or value != "" or (key == "rank" and value != 1) or (key == "area" and value != 1.0) or (key == "landAreaKm" and value != 0.0) or (key == "netChange" and value != 0.0) or (key == "growthRate" and value != -1.0) or (key == "worldPercentage" and value != 0) or (key == "density" and value != 0) or (key == "densityMi" and value != 0) or (key == "place" and value != 0) or (key == "pop1980" and value != 0) or (key == "pop2000" and value != 0) or (key == "pop2010" and value != 0) or (key == "pop2022" and value != 0) or (key == "pop2023" and value != 0) or (key == "pop2030" and value != 0) or (key == "pop2050" and value != 0):
+        if value != None or value != "" or (key == "rank" and value != 0) or (key == "area" and value != 1.0) or (key == "landAreaKm" and value != 0.0) or (key == "netChange" and value != 0.0) or (key == "growthRate" and value != -1.0) or (key == "worldPercentage" and value != 0) or (key == "density" and value != 0) or (key == "densityMi" and value != 0) or (key == "place" and value != 0) or (key == "pop1980" and value != 0) or (key == "pop2000" and value != 0) or (key == "pop2010" and value != 0) or (key == "pop2022" and value != 0) or (key == "pop2023" and value != 0) or (key == "pop2030" and value != 0) or (key == "pop2050" and value != 0):
             upt_co = mycollection.find_one_and_update({"_id": ObjectId(id)}, {"$set": {key: value}})
             
     return upt_co
