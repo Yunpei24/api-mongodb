@@ -45,7 +45,11 @@ def updateCountry(id, newCountryData, mycollection):
             or (key == "area" and value != 0) or (key == "landAreaKm" and value != 0)\
             or (key == "netChange" and value != 0) or (key == "growthRate" and value != 0)\
             or (key == "worldPercentage" and value != 0) or (key == "density" and value != 0)\
-            or (key == "densityMi" and value != 0) or (key == "place" and value != 0) or (key == "pop1980" and value != 0) or (key == "pop2000" and value != 0) or (key == "pop2010" and value != 0) or (key == "pop2022" and value != 0) or (key == "pop2023" and value != 0) or (key == "pop2030" and value != 0) or (key == "pop2050" and value != 0) or (key == "cca2" and value != "") or (key == "cca3" and value != ""):
+            or (key == "densityMi" and value != 0) or (key == "place" and value != 0)\
+            or (key == "pop1980" and value != 0) or (key == "pop2000" and value != 0) or (key == "pop2010" and value != 0)\
+            or (key == "pop2022" and value != 0) or (key == "pop2023" and value != 0) or (key == "pop2030" and value != 0)\
+            or (key == "pop2050" and value != 0) or (key == "cca2" and value != "") or (key == "cca3" and value != ""):
+            
             upt_co = mycollection.find_one_and_update({"_id": ObjectId(id)}, {"$set": {str(key): value}})
             
     return upt_co
