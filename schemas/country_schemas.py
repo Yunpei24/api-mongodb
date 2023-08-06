@@ -215,7 +215,8 @@ def getDistinctRequest(distinct, mycollection):
         countries = mycollection.distinct(distinct[0])
     elif len(distinct) == 2:
         countries = mycollection.distinct(distinct[0], distinct[1])
-
+    elif len(distinct) == 3:
+        countries = mycollection.distinct(distinct[0], distinct[1], distinct[2])
     # On met les données dans un dataframe
     df = pd.DataFrame(countries)
     return df
